@@ -11,6 +11,7 @@
 - [Tema 1](#tema-1)
 - [Tema 2](#tema-2)
 - [Tema 3](#tema-3)
+- [Tema 4](#tema-4)
 
 ## Actividades
 
@@ -18,6 +19,7 @@
 - [Actividad 2](#actividad-2)
 - [Actividad 3](#actividad-3)
 - [Actividad 4](#actividad-4)
+- [Actividad 5](#actividad-5)
 
 
 ---
@@ -33,6 +35,12 @@ Apuntes y notas del tema 2.
 ## Tema 3
 
 Apuntes y notas del tema 3.
+
+## Tema 4
+
+Racionalidad.
+
+Un agente racional es aquel que que debe aprender aquella accion que maximice su medida de rendimiento.
 
 ---
 
@@ -68,6 +76,47 @@ Teniendo en cuenta esos dos puntos se puede seguir una secuencia basica para def
  4.  **Realización del movimiento**: Una vez que se ha seleccionado el mejor movimiento, realizar este movimiento en el tablero y actualizar el juego.
     
 5.  **Repetición del proceso**: Repetir estos pasos en cada turno hasta que se alcance una condición como una victoria o empate.
+
+## Actividad 5
+
+Mejor medida de rendimiento y mejor secuencia para el problema del hombre, lechuga,pollo y zorro; problema de los tres canibales y tres monjes
+
+### Problema 1: 
+
+Medida de rendimiento:
+- Menor cantidad de movimientos.
+- El pollo no debe estar solo con el zorro, ni la lechuga.
+- El hombre debe manejar el bote
+- Solo dos por viaje del bote
+- Pasar a todos al otro lado
+
+Secuencia de percepciones:
+
+| H, L, P, Z |  |             |
+|--          |--| --          |
+| H, L, Z    |  | P           |
+| H, Z, P    |  | L           |
+| H, P       |  | L, Z        |
+|            |  | H, P ,L, Z  |
+
+### Problema 2: 
+
+Medida de rendimiento:
+- Menor cantidad de movimientos.
+- No dejar a los monjes solos con los canibales
+- Dos individuos por bote
+- Pasar a todos al otro lado
+
+Secuencia de percepciones:
+
+| C,C,C,M,M,M |  |              |
+|--           |--| --           |
+| C,C,M,M     |  | C,M          |
+| M,M,M       |  | C,C,C        |
+| C,M         |  | M,M,C,C      |
+|             |  | M,M,M,C,C,C  |
+
+
 ---
 
 # Unidad 2
