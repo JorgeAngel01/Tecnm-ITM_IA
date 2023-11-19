@@ -5,3 +5,15 @@ Este README proporciona información esencial sobre este repositorio de proyecto
 ### Descripción del Proyecto
 
 Este proyecto se centra en realizar tareas relacionadas con la IA. En este repositorio se abarcan la creación de programas usando Python y Jupyter Notebooks, entre otras tecnologias.
+
+
+```
+python -m venv venv
+
+Set-ExecutionPolicy Unrestricted -Scope Process
+
+.\venv\Scripts\activate
+
+pip install -r requirements.txt
+
+```

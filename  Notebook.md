@@ -64,7 +64,7 @@ Los problemas de juguete son problemas que se utilizan para probar los algoritmo
 
 ### Introducción a la Inteligencia Artificial Actividad 1
 
-Los hombres se han denominado a sí mismos como Homo sapiens (hombre sabio) porque nuestras capacidades mentales son muy importantes para nosotros. Durante miles de años, hemos tratado de entender cómo pensamos;es decir, entender cómo un sim- ple puñado de materia puede percibir, entender, predecir y manipular un mundo mucho más grande y complicado que ella misma. El campo de la inteligencia artificial, o IA, va más allá: no sólo intenta comprender, sino que también se esfuerza en construir entidades inteligentes.
+Los hombres se han denominado a sí mismos como Homo sapiens (hombre sabio) porque nuestras capacidades mentales son muy importantes para nosotros. Durante miles de años, hemos tratado de entender cómo pensamos;es decir, entender cómo un simple puñado de materia puede percibir, entender, predecir y manipular un mundo mucho más grande y complicado que ella misma. El campo de la inteligencia artificial, o IA, va más allá: no sólo intenta comprender, sino que también se esfuerza en construir entidades inteligentes.
 
 **Dado el texto anterior, se requiere hacer lo siguiente.**
 • Redactar un ensayo mínimo 2000 palabras, del capitulo 1,2, 26, 27, apartado A del libro, inteligencia artificial un enfoque moderno.
@@ -94,11 +94,11 @@ book
 
 ### Introducción a la Inteligencia Artificial: Introspección
 
-La introspección (del latín «"introspicere" (mirar en el interior)») o inspec- ción interna designa la idea de «mirar al interior». Se trata del conocimiento que el sujeto pueda adquirir de sus propios estados mentales, o sea, designa a situación, para un sujeto dado, de observarse y analizarse a sí mismo, in- terpretando y caracterizando sus propios procesos cognitivos y emotivos, por lo tanto se requiere resolver el siguiente problema analizado la forma es que usted mismo ***resuelve el problema redactar un ensayo de la solución mínimo 3 cuartillas, escribir el documento en markdown***.
+La introspección (del latín «"introspicere" (mirar en el interior)») o inspec- ción interna designa la idea de «mirar al interior». Se trata del conocimiento que el sujeto pueda adquirir de sus propios estados mentales, o sea, designa a situación, para un sujeto dado, de observarse y analizarse a sí mismo, interpretando y caracterizando sus propios procesos cognitivos y emotivos, por lo tanto se requiere resolver el siguiente problema analizado la forma es que usted mismo ***resuelve el problema redactar un ensayo de la solución mínimo 3 cuartillas, escribir el documento en markdown***.
 
 Coloca ocho alfiles (cuatro negros y cuatro blancos) en un tablero de ajedrez reducido, tal como se ve en la figura. El problema consiste en hacer que los alfiles negros intercambien sus posiciones con los blancos, ningún alfil debe atacar en ningún momento otro del color opuesto. Se deben alternar los movimientos, primero uno blanco, luego uno negro, luego uno blanco y así sucesivamente. ¿Cuál es el mínimo número de movimientos en que se puede conseguir?.
 
-![Problema de las ocho torres](/assets/torres.jpg)
+![Problema de las ocho torres](/assets/alfiles.jpg)
 
 **Respuestas:**
 [Ensayos](/unidad1/practica3.md)
@@ -107,8 +107,10 @@ Coloca ocho alfiles (cuatro negros y cuatro blancos) en un tablero de ajedrez re
 
 ### Introducción  a  la  Inteligencia  Artificial:	Introspección
 
-La introspección (del latín «"introspicere" (mirar en el interior)») o inspección interna designa la idea de «mirar al interior». Se trata del conocimiento que el sujeto pueda adquirir de sus propios estados mentales, o sea, designa la situación, para un sujeto dado, de observarse y analizarse a sí mismo, in- terpretando y caracterizando sus propios procesos cognitivos y emotivos, por lo tanto se requiere resolver el siguiente problema analizado la forma es que usted mismo resuelve el problema ***redactar un ensayo de la solución mínimo 3 cuartillas, escribir el documento en markdown***.
-Se trata de contar el numero de elementos (islas) contenidos en la sigu- iente imagen, se requiere lo siguiente.
+La introspección (del latín «"introspicere" (mirar en el interior)») o inspección interna designa la idea de «mirar al interior». Se trata del conocimiento que el sujeto pueda adquirir de sus propios estados mentales, o sea, designa la situación, para un sujeto dado, de observarse y analizarse a sí mismo, interpretando y caracterizando sus propios procesos cognitivos y emotivos, por lo tanto se requiere resolver el siguiente problema analizado la forma es que usted mismo resuelve el problema ***redactar un ensayo de la solución mínimo 3 cuartillas, escribir el documento en markdown***.
+Se trata de contar el numero de elementos (islas) contenidos en la siguiente imagen, se requiere lo siguiente.
+
+![Islas](/assets/islas.JPG)
 
 ◦ Hacer un programa que pueda contar el numero de elementos que son del mismo color
 ◦ Utilizar método iterativo y recursivo
@@ -245,7 +247,7 @@ Secuencia de percepciones:
 |             |  | M,M,M,C,C,C  |
 
 
-### Problema 3
+### Problema 3:
 
 El juego consiste en pasar las 3 ranas verdes a la derecha y las 3 ranas marrones a la izquierda. Las ranas pueden saltar a una piedra vacía que tengan delante, o saltar por encima de otra rana si en medio de ambas hay una piedra vacía. Pulsa sobre la rana que quieres que salte.
 
@@ -253,14 +255,6 @@ El juego consiste en pasar las 3 ranas verdes a la derecha y las 3 ranas marrone
 
 ***Respuesta:***
 
-
-## Practica 8.1
-
-Imagen carretera, eliminar todo lo que no sea carretera, escala de grises.
-
-## Practica 8.2
-
-Obtener un dataset de imagenes de personas con cubrebocas y sin cubrebocas. Utilizar el dataset para crear un archivo haar cascade para detectar las caras en las imagenes. Utiliza HaarCascadeGui para crear el archivo.
 
 # Unidad 2
 
@@ -303,8 +297,8 @@ Existen varias funciones de activacion, cada una con sus propias caracteristicas
 
 ## Practica 9
 
-Un conjunto de datos (conocido también por el anglicismo dataset, común- mente utilizado en algunos países hispanohablantes) es una colección de datos habitualmente tabulada.
-En el caso de datos tabulados, un conjunto de datos contiene los valores para cada una de las variables organizadas como columnas, como por ejem- plo la altura y el peso de un objeto, que corresponden a cada miembro del conjunto de datos,  que están organizados en filas.  Cada uno de estos val- ores se conoce con el nombre de dato. El conjunto de datos también puede consistir en una colección de documentos o de archivos.
+Un conjunto de datos (conocido también por el anglicismo dataset, comúnmente utilizado en algunos países hispanohablantes) es una colección de datos habitualmente tabulada.
+En el caso de datos tabulados, un conjunto de datos contiene los valores para cada una de las variables organizadas como columnas, como por ejemplo la altura y el peso de un objeto, que corresponden a cada miembro del conjunto de datos,  que están organizados en filas.  Cada uno de estos valores se conoce con el nombre de dato. El conjunto de datos también puede consistir en una colección de documentos o de archivos.
 
 ◦ Generar un dataset de rostros por lo menos 5 diferentes
 
