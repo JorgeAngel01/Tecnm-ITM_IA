@@ -9,11 +9,11 @@ var bala2, balaD2=false;
 var salto;
 var menu;
 
-var movIzq;
-var movDer;
-
+var posicionJugador;
 var velocidadBala;
 var despBala;
+var posicionBala2 = 0;
+var velocidadBala2;
 var despBala2;
 
 var estatusSalto;
@@ -25,8 +25,8 @@ var modoAuto = false, eCompleto=false;
 
 var alternateBala = false;
 
-var balasDisp = 0;
-var dirUltimaBala = '';
+var timeBala1 = 0;
+var timeBala2 = 0;
 
 var juego = new Phaser.Game(w, h, Phaser.CANVAS, '', { preload: preload, create: create, update: update, render:render});
 
@@ -56,6 +56,7 @@ function create() {
     jugador.body.collideWorldBounds = true;
     var corre = jugador.animations.add('corre',[8,9,10,11]);
     jugador.animations.play('corre', 10, true);
+    posicionJugador = jugador.position.x;
 
     juego.physics.enable(bala);
     bala.body.collideWorldBounds = true;
@@ -74,7 +75,7 @@ function create() {
     movIzq = juego.input.keyboard.addKey(Phaser.Keyboard.LEFT);
     movDer = juego.input.keyboard.addKey(Phaser.Keyboard.RIGHT);
     
-    nnNetwork =  new synaptic.Architect.Perceptron(3,7,7,3);
+    nnNetwork =  new synaptic.Architect.Perceptron(6, 10, 10, 10, 3);
     nnEntrenamiento = new synaptic.Trainer(nnNetwork);
 
 }
@@ -85,20 +86,19 @@ function enRedNeural(){
 
 function datosDeEntrenamiento(param_entrada){
 
-    console.log("Entrada",param_entrada[0]+" "+param_entrada[1]+" "+param_entrada[2]);
+    console.log("Entrada",param_entrada[0]+" "+param_entrada[1]+" "+param_entrada[2] + " "+param_entrada[3] + " "+param_entrada[4]);
     nnSalida = nnNetwork.activate(param_entrada);
     var salto=Math.round( nnSalida[0]*100 );
     var atras=Math.round( nnSalida[1]*100 );
     var adelante=Math.round( nnSalida[2]*100 );
     console.log("-------");
-    console.log("Salto: "+ nnSalida[0] + " Atras: "+ nnSalida[1] + " Adelante: "+ nnSalida[2]);
+    console.log("Salto: "+ salto + " Atras: "+ atras + " Adelante: "+ adelante);
     console.log("Valor ","En el Salto %: "+ salto);
     console.log("Valor ","Atras %: "+ atras);
     console.log("Valor ","Adelante %: "+ adelante);
     var salidas =[]
     salidas[0] = nnSalida[0]
-    salidas[1] = nnSalida[1]
-    salidas[2] = nnSalida[2]
+    salidas[1] = nnSalida[1] - nnSalida[2]
     return salidas;
 }
 
@@ -144,20 +144,30 @@ function mPausa(event){
 function resetVariables(){
     jugador.body.velocity.x=0;
     jugador.body.velocity.y=0;
-    jugador.position.x=50;
-    
+
     bala.body.velocity.x = 0;
     bala.position.x = w-100;
-    
+
     bala2.body.velocity.y = 0;
     bala2.position.x = jugador.position.x;
     bala2.position.y = h-400; 
     
+    jugador.position.x=50;
     balaD=false;
     balaD2=false;
+}
 
-    balasDisp = 0;
-    dirUltimaBala = '';
+function resetBala(){
+    bala.body.velocity.x = 0;
+    bala.position.x = w-100;
+    balaD=false;
+}
+
+function resetBala2(){
+    bala2.body.velocity.y = 0;
+    bala2.position.x = jugador.position.x;
+    bala2.position.y = h-400; 
+    balaD2=false;
 }
 
 function saltar(){
@@ -167,6 +177,9 @@ function saltar(){
 function update() {
 
     fondo.tilePosition.x -= 1; 
+    
+    posicionBala2 = bala.position.y;
+    posicionJugador = jugador.position.x;
 
     juego.physics.arcade.collide(bala, jugador, colisionH, null, this);
     juego.physics.arcade.collide(bala2, jugador, colisionH, null, this);
@@ -210,75 +223,69 @@ function update() {
     }
 
     
-    if( modoAuto == true  && bala.position.x>0) {
+    if( modoAuto == true  && bala.position.x>0 && jugador.body.onFloor()) {
 
-        salidas = datosDeEntrenamiento( [despBala, velocidadBala, despBala2] );
+        salidas = datosDeEntrenamiento( [ posicionJugador, despBala , velocidadBala, posicionBala2, despBala2, velocidadBala2] );
 
         if( salidas[0] > 0.5 && jugador.body.onFloor()){
             saltar();
         }
-        if( salidas[1] > salidas[2] && salidas[1] > 0.2 ){
-            jugador.body.velocity.x = -150; 
+        if(Math.abs(salidas[1]) > 0.2){
+            if( salidas[1] > 0 ){
+                jugador.body.velocity.x = -150; 
+            }else{
+                jugador.body.velocity.x = 150; 
+            }
         }
-        if( salidas[2] > salidas[1] && salidas[2] > 0.2 ){
-            jugador.body.velocity.x = 150; 
-        }
+
         /* if( datosDeEntrenamiento( [despBala , velocidadBala] )  ){
             saltar();
         } */
     }
 
-    random = randomIntFromInterval(0,1);
-    console.log("Random: ",random);
-    if ( random == 0) {
-        alternateBala = true;
-    }
-    else{
-        alternateBala = false;
-    }
     
-    if (balaD === false && alternateBala === true && balaD2 !== true) {
-        if (dirUltimaBala !== 'left') {
+    if( balaD==false ){
+        timeBala1 += juego.time.elapsed;
+        let delay = randomIntFromInterval(0,3500);
+        if (timeBala1 >= delay)  
+        {
+            timeBala1 = 0;
             disparo();
-            dirUltimaBala = 'left';
-            balasDisp = 1;
-        } else if (balasDisp < 3) {
-            disparo();
-            balasDisp++;
         }
-    }
-
-    if (balaD2 === false && alternateBala === false && balaD !== true) {
-        if (dirUltimaBala !== 'right') {
+    } 
+    
+    if( balaD2==false ){
+        timeBala2 += juego.time.elapsed;
+        let delay = randomIntFromInterval(1000,5000);
+        if (timeBala2 >= delay)  
+        {
+            timeBala2 = 0;
             disparo2();
-            dirUltimaBala = 'right';
-            balasDisp = 1;
-        } else if (balasDisp < 3) {
-            disparo2();
-            balasDisp++;
         }
-    }  
-
+    } 
     
     if( bala.position.x <= 0  ){
-        resetVariables();
+        resetBala();
     }
     if( bala2.position.y >= 370  ){
-        resetVariables();
+        resetBala2();
     }
 
     
-    if( modoAuto ==false  && bala.position.x > 0 ){
+    if( modoAuto ==false  && bala.position.x > 0 
+        || modoAuto == false && bala2.position.y < 370
+        ){
 
         datosEntrenamiento.push({
-                'input' :  [despBala , velocidadBala, despBala2],
+                'input' :  [posicionJugador, despBala , velocidadBala, posicionBala2,despBala2, velocidadBala2],
                 'output':  [estatusSalto, estatusAtras, estatusAdelante ]  
         });
 
         /* console.log("Desplazamiento Bala, Velocidad Bala, Estatus, Estatus: ",
             despBala + " " +velocidadBala + " "+ estatusAire+" "+  estatuSuelo); */
         
-        console.log("Desplazamiento Bala: " + despBala + " Velocidad Bala: " + velocidadBala + " Desplazamiento Bala2: " + despBala2);
+        console.log("Desplazamiento Bala, Velocidad Bala, Posicion Bala2, Desplazamiento Bala2, Velocidad Bala2, Estatus Salto, Estatus Atras, Estatus Adelante: ",
+            despBala + " " +velocidadBala + " "+ posicionBala2 + " "+ despBala2 + " "+ velocidadBala2 + " "+ estatusSalto+" "+  estatusAtras+" "+  estatusAdelante);
    }
 
 }
@@ -296,7 +303,7 @@ function disparo(){
 
 function disparo2(){
     
-    velocidadBala2 =  1 * velocidadRandom(300,500);
+    velocidadBala2 =  1 * velocidadRandom(300,800);
     bala2.body.velocity.y = velocidadBala2 ;
     bala2.body.velocity.x = 0 ;
     balaD2=true;
