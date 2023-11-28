@@ -228,8 +228,36 @@ function update() {
         } */
     }
 
-    spawnBala1();
-    spawnBala2();
+    random = randomIntFromInterval(0,1);
+    console.log("Random: ",random);
+    if ( random == 0) {
+        alternateBala = true;
+    }
+    else{
+        alternateBala = false;
+    }
+    
+    if (balaD === false && alternateBala === true && balaD2 !== true) {
+        if (dirUltimaBala !== 'left') {
+            disparo();
+            dirUltimaBala = 'left';
+            balasDisp = 1;
+        } else if (balasDisp < 3) {
+            disparo();
+            balasDisp++;
+        }
+    }
+
+    if (balaD2 === false && alternateBala === false && balaD !== true) {
+        if (dirUltimaBala !== 'right') {
+            disparo2();
+            dirUltimaBala = 'right';
+            balasDisp = 1;
+        } else if (balasDisp < 3) {
+            disparo2();
+            balasDisp++;
+        }
+    }  
 
     
     if( bala.position.x <= 0  ){
