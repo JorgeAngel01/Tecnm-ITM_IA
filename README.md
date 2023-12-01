@@ -21,3 +21,16 @@ Set-ExecutionPolicy Unrestricted -Scope Process
 pip install -r requirements.txt
 
 ```
+
+*Linux Commands*
+
+Lampp:
+```
+sudo /opt/lampp/lampp/ start
+```
+
+Python:
+```
+python -m venv venv
+.\venv\Scripts\activate
+```
