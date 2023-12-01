@@ -31,6 +31,6 @@ sudo /opt/lampp/lampp/ start
 
 Python:
 ```
-python -m venv venv
-.\venv\Scripts\activate
+virtualenv -p /home/username/opt/python-3.10.1/bin/python3 venv
+source env/bin/activate
 ```
