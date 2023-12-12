@@ -6,6 +6,10 @@ Este README proporciona información esencial sobre este repositorio de proyecto
 
 Este proyecto se centra en realizar tareas relacionadas con la IA. En este repositorio se abarcan la creación de programas usando Python y Jupyter Notebooks, entre otras tecnologias.
 
+Para revisar las practicas, estas se encuentran en el siguiente archivo: [Notebook.md](%20Notebook.md)
+Para revisar los proyectos, estos se encuentran en sus respectivas carpetas.
+
+
 To generate current requisites:
 ```
 python -m pip freeze > requirements.txt
